@@ -1,0 +1,21 @@
+
+ Part C. 
+ Average number of characters for gba.txt is 4
+
+ Part D, count the number of words of each length.
+ There are 7 words of length 1.
+ There are 56 words of length 2.
+ There are 56 words of length 3.
+ There are 56 words of length 4.
+ There are 37 words of length 5.
+ There are 18 words of length 6.
+ There are 23 words of length 7.
+ There are 7 words of length 8.
+ There are 9 words of length 9.
+ There are 6 words of length 10.
+ There are 3 words of length 11.
+ 
+Part E, count then umber of words in the input file.
+ There are 278 words in the input file.
+
+

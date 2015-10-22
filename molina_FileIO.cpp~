@@ -1,0 +1,178 @@
+/* Name: Dario Molina
+ 10/21/15
+ Description: Write a program that will utilize a text input file( gba.txt) and compute the listed specifications provided.  
+
+a) Determine the average number of characters per word. Print result to "result.txt".
+
+b) Provide a count of the number of words of each length. 
+
+c) Calculate the total number of words in the input file.  Print result to "result.txt".
+
+d) Capitalize all letter in the file.  Write the results to "capitalize.txt".
+
+e) Change the first letter of each word from original file to uppercase. Write results to "uppercase.txt".
+*/
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<cstdlib>
+#include <stdio.h>
+#include <ctype.h>
+using namespace std;
+
+string upperAll(string strA);
+
+int main()
+{
+  int sumLength = 0, count = 0, average = 0;
+  int length1 = 0,length2 = 0, length3 = 0;
+  int length4 = 0,length5 = 0, length6 = 0;
+  int length7 = 0,length8 = 0, length9 = 0;
+  int length10 = 0, length11 = 0;
+  char caps, caps2;
+  string strA, fullText, fullText2;
+  string result, result2;
+  ifstream fin;
+  ofstream foutA;
+  ofstream foutB;
+  ofstream foutC;
+  
+   fin.open("gba.txt");
+   foutA.open("results.txt");
+   foutB.open( "capitalize.txt");
+   foutC.open( "uppercase.txt");
+   
+   if( fin.fail())
+   {
+     cout << " Opening file failed." << endl;
+     exit(1);
+   }
+
+   if(foutA.fail())
+   {
+     cout << " Error sending out file." << endl;
+     exit(1);
+   }
+   
+   if(foutB.fail())
+   {
+     cout << " Error sending out file." << endl;
+     exit(1);
+   }
+   
+   if(foutC.fail())
+   {
+     cout << " Error sending out file." << endl;
+     exit(1);
+   }
+
+  while( fin >> strA)
+ {
+   
+   sumLength = sumLength + strA.length();
+   count++;
+   
+    switch ( strA.length() )
+    {
+      case 1: length1++; break;
+      
+      case 2: length2++; break;
+       
+      case 3: length3++; break;
+       
+      case 4: length4++; break;
+   
+      case 5: length5++; break;
+        
+      case 6: length6++; break;
+        
+      case 7: length7++; break;
+        
+      case 8: length8++; break;
+      
+      case 9: length9++; break;
+        
+      case 10: length10++; break;
+        
+      default: length11++; break;
+  
+    }
+     
+     
+       for ( int i = 0; i < strA.length(); i++)
+      {
+      
+         caps =  strA.at(i);
+         caps = toupper( caps);
+         result = result + caps;
+         
+      }
+      
+        fullText =  fullText + result;
+   
+        result = " ";
+        
+        
+      for ( int j = 0; j < strA.length(); j++)
+      {
+       
+         if (j == 0) 
+          {
+            caps2 = strA.at(j);
+            caps2 = toupper( caps2);
+            
+            result2 = result2 + caps2;
+          
+          }
+          
+          else 
+            {
+              result2 = result2 + strA.at(j);
+            
+            }
+         
+        
+      }
+       
+      fullText2 = fullText2 + result2;
+      result2 = " ";
+   
+ }
+ 
+  average = sumLength / count;
+  
+  foutA << "\n Part C. \n";
+  foutA << " Average number of characters for gba.txt is " << average << endl << endl;
+  
+  foutA << " Part D, count the number of words of each length.\n"
+       << " There are " << length1 << " words of length 1.\n"
+       << " There are " << length2 << " words of length 2.\n"
+       << " There are " << length3 << " words of length 3.\n"
+       << " There are " << length4 << " words of length 4.\n"
+       << " There are " << length5 << " words of length 5.\n"
+       << " There are " << length6 << " words of length 6.\n"
+       << " There are " << length7 << " words of length 7.\n"
+       << " There are " << length8 << " words of length 8.\n"
+       << " There are " << length9 << " words of length 9.\n"
+       << " There are " << length10 << " words of length 10.\n"
+       << " There are " << length11<< " words of length 11.\n"; 
+      
+  foutA << " \nPart E, count then umber of words in the input file.\n"
+       << " There are " << count << " words in the input file.\n\n";
+  foutA << endl;
+       
+  foutB << " Part F, write gba.txt with all Capitla letters.\n\n"
+       << fullText << " " ;
+  foutB << endl;
+    
+    foutC << " Part G, write gba.txt with the first letter of each word capitalized.\n\n"
+          << fullText2 << " ";
+    foutC << endl;
+       
+
+  fin.close();
+  foutA.close();
+  foutB.close();
+  foutC.close();
+return 0; 
+}
